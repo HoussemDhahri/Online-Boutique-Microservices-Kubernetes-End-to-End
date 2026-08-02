@@ -37,7 +37,7 @@ images:
   newTag: v1.0.1
 - name: houssemdhahri93/frontend
   newName: houssemdhahri93/frontend
-  newTag: v1.0.0
+  newTag: v1.0.1
 - name: houssemdhahri93/loadgenerator
   newName: houssemdhahri93/loadgenerator
   newTag: v1.0.0
