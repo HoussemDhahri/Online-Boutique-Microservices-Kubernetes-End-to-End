@@ -8,51 +8,51 @@ resources:
 
 
   
+
+
+
+
+
+
+
+
+
+
+
 images:
 - name: houssemdhahri93/adservice
   newName: houssemdhahri93/adservice
-  newTag: v1.0.0
-
+  newTag: v1.0.1
 - name: houssemdhahri93/cartservice
   newName: houssemdhahri93/cartservice
   newTag: v1.0.0
-
 - name: houssemdhahri93/checkoutservice
   newName: houssemdhahri93/checkoutservice
   newTag: v1.0.0
-
 - name: houssemdhahri93/currencyservice
   newName: houssemdhahri93/currencyservice
   newTag: v1.0.0
-
 - name: houssemdhahri93/emailservice
   newName: houssemdhahri93/emailservice
   newTag: v1.0.0
-
 - name: houssemdhahri93/frontend
   newName: houssemdhahri93/frontend
   newTag: v1.0.0
-
 - name: houssemdhahri93/loadgenerator
   newName: houssemdhahri93/loadgenerator
   newTag: v1.0.0
-
 - name: houssemdhahri93/paymentservice
   newName: houssemdhahri93/paymentservice
   newTag: v1.0.0
-
 - name: houssemdhahri93/productcatalogservice
   newName: houssemdhahri93/productcatalogservice
   newTag: v1.0.0
-
 - name: houssemdhahri93/recommendationservice
   newName: houssemdhahri93/recommendationservice
   newTag: v1.0.0
-
-- name: houssemdhahri93/shippingservice
-  newName: houssemdhahri93/shippingservice
-  newTag: v1.0.0
-
 - name: houssemdhahri93/redis
   newName: houssemdhahri93/redis
+  newTag: v1.0.0
+- name: houssemdhahri93/shippingservice
+  newName: houssemdhahri93/shippingservice
   newTag: v1.0.0
