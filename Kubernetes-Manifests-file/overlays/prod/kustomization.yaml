@@ -43,7 +43,7 @@ images:
   newTag: v1.0.1
 - name: houssemdhahri93/paymentservice
   newName: houssemdhahri93/paymentservice
-  newTag: v1.0.0
+  newTag: v1.0.1
 - name: houssemdhahri93/productcatalogservice
   newName: houssemdhahri93/productcatalogservice
   newTag: v1.0.0
