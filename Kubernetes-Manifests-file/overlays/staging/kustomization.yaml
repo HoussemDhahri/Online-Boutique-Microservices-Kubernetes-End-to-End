@@ -25,7 +25,7 @@ images:
   newTag: v1.0.1
 - name: houssemdhahri93/cartservice
   newName: houssemdhahri93/cartservice
-  newTag: v1.0.0
+  newTag: v1.0.1
 - name: houssemdhahri93/checkoutservice
   newName: houssemdhahri93/checkoutservice
   newTag: v1.0.0
