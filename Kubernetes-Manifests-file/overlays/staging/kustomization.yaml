@@ -28,7 +28,7 @@ images:
   newTag: v1.0.1
 - name: houssemdhahri93/checkoutservice
   newName: houssemdhahri93/checkoutservice
-  newTag: v1.0.0
+  newTag: v1.0.1
 - name: houssemdhahri93/currencyservice
   newName: houssemdhahri93/currencyservice
   newTag: v1.0.0
