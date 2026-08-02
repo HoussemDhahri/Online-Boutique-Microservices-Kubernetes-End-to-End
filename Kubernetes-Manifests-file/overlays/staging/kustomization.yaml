@@ -46,7 +46,7 @@ images:
   newTag: v1.0.1
 - name: houssemdhahri93/productcatalogservice
   newName: houssemdhahri93/productcatalogservice
-  newTag: v1.0.0
+  newTag: v1.0.1
 - name: houssemdhahri93/recommendationservice
   newName: houssemdhahri93/recommendationservice
   newTag: v1.0.0
