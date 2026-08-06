@@ -30,7 +30,7 @@ spec:
           readinessProbe:
             grpc:
               port: 9555
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15
             periodSeconds: 10
             timeoutSeconds: 3
             failureThreshold: 3
@@ -38,7 +38,7 @@ spec:
           livenessProbe:
             grpc:
               port: 9555
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 15
             timeoutSeconds: 5
             failureThreshold: 3
