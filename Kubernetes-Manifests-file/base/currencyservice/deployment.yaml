@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency-deployment
+  labels:
+    app: currency-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: currency-app
+
+  template:
+    metadata:
+      labels:
+        app: currency-app
+
+    spec:
+      containers:
+        - name: currency-container
+          image: houssemdhahri93/currencyservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 7000
+
+          readinessProbe:
+            grpc:
+              port: 7000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 7000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"

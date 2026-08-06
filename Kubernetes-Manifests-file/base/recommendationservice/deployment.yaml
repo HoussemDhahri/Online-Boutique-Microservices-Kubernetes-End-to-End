@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation-deployment
+  labels:
+    app: recommendation-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: recommendation-app
+
+  template:
+    metadata:
+      labels:
+        app: recommendation-app
+
+    spec:
+      containers:
+        - name: recommendation-container
+          image: houssemdhahri93/recommendationservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - configMapRef:
+                name: recommendation-config
+
+          readinessProbe:
+            grpc:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"

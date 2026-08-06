@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productcatalog-deployment
+  labels:
+    app: productcatalog-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: productcatalog-app
+
+  template:
+    metadata:
+      labels:
+        app: productcatalog-app
+
+    spec:
+      containers:
+        - name: productcatalog-container
+          image: houssemdhahri93/productcatalogservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 3550
+
+          readinessProbe:
+            grpc:
+              port: 3550
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 3550
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"

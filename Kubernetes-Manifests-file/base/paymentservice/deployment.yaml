@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-deployment
+  labels:
+    app: payment-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: payment-app
+
+  template:
+    metadata:
+      labels:
+        app: payment-app
+
+    spec:
+      containers:
+        - name: payment-container
+          image: houssemdhahri93/paymentservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 50051
+
+          readinessProbe:
+            grpc:
+              port: 50051
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 50051
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-deployment
+  labels:
+    app: email-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: email-app
+
+  template:
+    metadata:
+      labels:
+        app: email-app
+
+    spec:
+      containers:
+        - name: email-container
+          image: houssemdhahri93/emailservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 8080
+
+          readinessProbe:
+            grpc:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"

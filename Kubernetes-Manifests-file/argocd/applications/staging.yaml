@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: online-boutique-staging
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/HoussemDhahri/Online-Boutique-Microservices-Kubernetes-End-to-End.git
+    targetRevision: main
+    path: Kubernetes-Manifests-file/overlays/staging
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: online-boutique-staging
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

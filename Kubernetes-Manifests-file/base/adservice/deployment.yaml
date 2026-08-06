@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad-deployment
+  labels:
+    app: ad-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: ad-app
+
+  template:
+    metadata:
+      labels:
+        app: ad-app
+
+    spec:
+      containers:
+        - name: ad-container
+          image: houssemdhahri93/adservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 9555
+
+          readinessProbe:
+            grpc:
+              port: 9555
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 9555
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"

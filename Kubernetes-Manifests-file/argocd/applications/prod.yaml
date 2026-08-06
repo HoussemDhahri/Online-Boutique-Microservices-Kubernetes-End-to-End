@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: online-boutique-prod
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/HoussemDhahri/Online-Boutique-Microservices-Kubernetes-End-to-End.git
+    targetRevision: main
+    path: Kubernetes-Manifests-file/overlays/prod
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: online-boutique-prod
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

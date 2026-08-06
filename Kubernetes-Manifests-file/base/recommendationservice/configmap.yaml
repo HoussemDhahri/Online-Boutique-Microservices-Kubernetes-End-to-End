@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recommendation-config
+
+data:
+  PRODUCTCATALOG_ADDR: "productcatalog-service:3550"

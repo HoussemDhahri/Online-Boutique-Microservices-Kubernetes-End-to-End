@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout-deployment
+  labels:
+    app: checkout-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: checkout-app
+
+  template:
+    metadata:
+      labels:
+        app: checkout-app
+
+    spec:
+      containers:
+        - name: checkout-container
+          image: houssemdhahri93/checkoutservice
+
+          imagePullPolicy: Always
+          
+          ports:
+            - containerPort: 5050
+
+          envFrom:
+            - configMapRef:
+                name: checkout-config
+
+          readinessProbe:
+            grpc:
+              port: 5050
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            grpc:
+              port: 5050
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"
