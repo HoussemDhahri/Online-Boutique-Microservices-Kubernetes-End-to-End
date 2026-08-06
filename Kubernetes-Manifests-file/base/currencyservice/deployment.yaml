@@ -27,6 +27,10 @@ spec:
           ports:
             - containerPort: 7000
 
+          envFrom:
+            - configMapRef:
+                name: currency-config
+
           readinessProbe:
             grpc:
               port: 7000
