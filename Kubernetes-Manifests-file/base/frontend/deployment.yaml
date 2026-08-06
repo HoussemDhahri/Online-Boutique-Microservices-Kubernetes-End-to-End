@@ -32,7 +32,8 @@ spec:
                 name: frontend-config
 
           readinessProbe:
-            grpc:
+            httpGet:
+              path: /
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
@@ -40,7 +41,8 @@ spec:
             failureThreshold: 3
 
           livenessProbe:
-            grpc:
+            httpGet:
+              path: /
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 15
