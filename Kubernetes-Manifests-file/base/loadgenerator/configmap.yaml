@@ -4,5 +4,5 @@ metadata:
   name: loadgenerator-config
 
 data:
-  FRONTEND_ADDR: "frontend-service:80"
+  FRONTEND_SERVICE_ADDR: "frontend-service:80"
   USERS: "10"

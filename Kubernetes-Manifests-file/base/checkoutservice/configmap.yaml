@@ -4,9 +4,9 @@ metadata:
   name: checkout-config
 
 data:
-  CART_ADDR: "cart-service:7070"
-  CURRENCY_ADDR: "currency-service:7000"
-  SHIPPING_ADDR: "shipping-service:50051"
-  PRODUCTCATALOG_ADDR: "productcatalog-service:3550"
-  EMAIL_ADDR: "email-service:8080"
-  PAYMENT_ADDR: "payment-service:50051"
+  CART_SERVICE_ADDR: "cart-service:7070"
+  CURRENCY_SERVICE_ADDR: "currency-service:7000"
+  SHIPPING_SERVICE_ADDR: "shipping-service:50051"
+  PRODUCT_CATALOG_SERVICE_ADDR: "productcatalog-service:3550"
+  EMAIL_SERVICE_ADDR: "email-service:8080"
+  PAYMENT_SERVICE_ADDR: "payment-service:50051"

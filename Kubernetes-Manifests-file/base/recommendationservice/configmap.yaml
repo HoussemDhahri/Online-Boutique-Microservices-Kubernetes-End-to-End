@@ -4,4 +4,4 @@ metadata:
   name: recommendation-config
 
 data:
-  PRODUCTCATALOG_ADDR: "productcatalog-service:3550"
+  PRODUCT_CATALOG_SERVICE_ADDR: "productcatalog-service:3550"
