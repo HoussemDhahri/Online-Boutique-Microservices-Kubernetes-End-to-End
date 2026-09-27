@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: onlineboutique-loadgenerator-job
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+
+spec:
+  backoffLimit: 0
+
+  template:
+    metadata:
+      labels:
+        app: loadgenerator-app
+
+    spec:
+      restartPolicy: Never
+
+      containers:
+        - name: loadgenerator-container
+          image: houssemdhahri93/loadgenerator
+          imagePullPolicy: Always
+
+          envFrom:
+            - configMapRef:
+                name: onlineboutique-loadgenerator-config
+
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"
